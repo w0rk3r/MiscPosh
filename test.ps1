@@ -1,6 +1,5 @@
 $ModuleName = [Guid]::NewGuid().ToString()
-$a = @()
-$AppDomain = [Reflection.Assembly].Assembly.GetType('System.AppDomain').GetProperty('CurrentDomain').GetValue($null, $a)
+$AppDomain = [Reflection.Assembly].Assembly.GetType('System.AppDomain').GetProperty('CurrentDomain').GetValue($null, @())
 $DynAssembly = New-Object Reflection.AssemblyName($ModuleName)
 $AssemblyBuilder = $AppDomain.DefineDynamicAssembly($DynAssembly, 'Run')
 $Mod = $AssemblyBuilder.DefineDynamicModule($ModuleName, $False)
